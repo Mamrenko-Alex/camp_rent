@@ -8,6 +8,7 @@ export const Options = () => {
     <div className={styles.container_options}>
       <Location />
       <Filters />
+      <button className={styles.button_search}>Search</button>
     </div>
   );
 };

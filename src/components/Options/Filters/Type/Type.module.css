@@ -1,8 +1,8 @@
 .item_type {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  padding: 10px 24px;
+  height: 95px;
+  padding: 10px 30px;
   min-width: 100px;
   max-width: 128px;
   justify-content: space-around;

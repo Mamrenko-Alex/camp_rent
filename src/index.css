@@ -53,11 +53,13 @@ ul {
 
 h2 {
   font-size: 20px;
+  font-weight: 600;
 }
 
 .list_item {
   text-align: center;
   font-weight: 500;
+  line-height: 20px;
 }
 
 button {
@@ -107,4 +109,11 @@ body {
   color: var(--primary-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  gap: 64px;
+  justify-content: center;
+  margin-top: 24px;
 }
