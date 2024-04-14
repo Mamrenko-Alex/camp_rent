@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.383c77c1.css",
-    "main.js": "/react-homework-template/static/js/main.3256e4f6.js",
-    "static/media/Inter-SemiBold.woff2": "/react-homework-template/static/media/Inter-SemiBold.3be6b9e3b22c24eaada7.woff2",
-    "static/media/Inter-Medium.woff2": "/react-homework-template/static/media/Inter-Medium.9c1163dc5cc2a1c9b55b.woff2",
-    "static/media/Inter-Regular.woff2": "/react-homework-template/static/media/Inter-Regular.76224c7fa303861462e7.woff2",
-    "index.html": "/react-homework-template/index.html",
-    "main.383c77c1.css.map": "/react-homework-template/static/css/main.383c77c1.css.map",
-    "main.3256e4f6.js.map": "/react-homework-template/static/js/main.3256e4f6.js.map"
+    "main.css": "/camp_rent/static/css/main.1336832b.css",
+    "main.js": "/camp_rent/static/js/main.3256e4f6.js",
+    "static/media/Inter-SemiBold.woff2": "/camp_rent/static/media/Inter-SemiBold.3be6b9e3b22c24eaada7.woff2",
+    "static/media/Inter-Medium.woff2": "/camp_rent/static/media/Inter-Medium.9c1163dc5cc2a1c9b55b.woff2",
+    "static/media/Inter-Regular.woff2": "/camp_rent/static/media/Inter-Regular.76224c7fa303861462e7.woff2",
+    "index.html": "/camp_rent/index.html",
+    "main.1336832b.css.map": "/camp_rent/static/css/main.1336832b.css.map",
+    "main.3256e4f6.js.map": "/camp_rent/static/js/main.3256e4f6.js.map"
   },
   "entrypoints": [
-    "static/css/main.383c77c1.css",
+    "static/css/main.1336832b.css",
     "static/js/main.3256e4f6.js"
   ]
 }
