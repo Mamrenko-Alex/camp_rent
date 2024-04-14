@@ -5,10 +5,13 @@ import { ItemAdvert } from './ItemAdvert';
 
 export const Advert = () => {
   return (
-    <ul className={styles.container_advert}>
-      {data.data.map(obj => (
-        <ItemAdvert key={obj.id} offer={obj} />
-      ))}
-    </ul>
+    <section className={styles.section_advert}>
+      <ul className={styles.container_advert}>
+        {data.data.map(obj => (
+          <ItemAdvert key={obj.id} offer={obj} />
+        ))}
+      </ul>
+      <button className={styles.button_load_more}>Load more</button>
+    </section>
   );
 };
