@@ -31,9 +31,14 @@ export const Modal = ({ toggleModal, offer }) => {
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div className={styles.modal}>
-        <div>
+        <div className={styles.name_wrapper}>
           <h2>{offer.name}</h2>
-          <span onClick={handleCloseButtonClick}>X</span>
+          <span
+            onClick={handleCloseButtonClick}
+            className={styles.button_close}
+          >
+            x
+          </span>
         </div>
         <div className={styles.secondary_info}>
           <span>
@@ -41,13 +46,12 @@ export const Modal = ({ toggleModal, offer }) => {
           </span>
           <span>{offer.location}</span>
         </div>
-        <div>
-          <h2>€{offer.price.toFixed(2)}</h2>
-        </div>
-        <div>
+        <h2>€{offer.price.toFixed(2)}</h2>
+        <div className={styles.gallery_advert}>
           {offer.gallery.map(photo => (
             <img
               //   Not unique objects
+              className={styles.photo_advert}
               src={photo}
               alt={offer.name}
               width={290}
@@ -55,19 +59,18 @@ export const Modal = ({ toggleModal, offer }) => {
             />
           ))}
         </div>
-        <div>
-          <p>{offer.description}</p>
-        </div>
+        <p className={styles.description_advert}>{offer.description}</p>
         <nav>
-          <ul>
-            <li>
+          <ul className={styles.nav_list}>
+            <li className={styles.nav_item}>
               <h2>Features</h2>
             </li>
-            <li>
+            <li className={styles.nav_item}>
               <h2>Reviews</h2>
             </li>
           </ul>
         </nav>
+        <hr />
       </div>
     </div>
   );
