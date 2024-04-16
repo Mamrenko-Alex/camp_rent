@@ -1,0 +1,43 @@
+.loader_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 888px;
+  height: 100vh;
+}
+
+.loader {
+  width: 160px;
+  height: 80px;
+  border-radius: 100px 100px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.loader:before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -100%;
+  background: radial-gradient(farthest-side, #ffd738 80%, #0000) left 70% top
+      20%/30px 30px,
+    radial-gradient(farthest-side, #020308 92%, #0000) left 65% bottom 19%/24px
+      24px,
+    radial-gradient(farthest-side, #ecfefe 92%, #0000) left 70% bottom 20%/30px
+      30px,
+    linear-gradient(#9eddfe 50%, #020308 0);
+  background-repeat: no-repeat;
+  animation: l5 2s infinite;
+}
+@keyframes l5 {
+  0%,
+  20% {
+    transform: rotate(0);
+  }
+  40%,
+  60% {
+    transform: rotate(0.5turn);
+  }
+  80%,
+  100% {
+    transform: rotate(1turn);
+  }
+}
