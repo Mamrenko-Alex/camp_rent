@@ -3,9 +3,24 @@ import { DetailsInfo } from './DetailsInfo/DetailsInfo';
 import { Modal } from '../Modal/Modal';
 import styles from './Advert.module.css';
 import { useToggle } from 'components/my_hooks/useToggle';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorites, removeFromFavorites } from '../../redux/operations';
 
 export const ItemAdvert = ({ offer }) => {
   const { isModalOpen, open, toggle } = useToggle();
+  const dispatch = useDispatch();
+  const { favorites } = useSelector(state => {
+    console.log(state.advert.favorites);
+    return state.advert;
+  });
+
+  const handleAddToFavorites = advert => {
+    if (favorites.includes(advert)) {
+      dispatch(removeFromFavorites(advert.id));
+    } else {
+      dispatch(addToFavorites(advert));
+    }
+  };
 
   return (
     <>
@@ -24,7 +39,14 @@ export const ItemAdvert = ({ offer }) => {
             <h2>{offer.name}</h2>
             <div className={styles.left_info_wrapper}>
               <h2>€{offer.price.toFixed(2)}</h2>
-              <svg
+              <span
+                className={styles.button_like_advert}
+                onClick={() => handleAddToFavorites(offer)}
+              >
+                {' '}
+                &#9829;
+              </span>
+              {/* <svg
                 className={styles.button_like_advert}
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -51,7 +73,7 @@ export const ItemAdvert = ({ offer }) => {
                     />
                   </clipPath>
                 </defs>
-              </svg>
+              </svg> */}
             </div>
           </div>
           <div className={styles.secondary_info}>

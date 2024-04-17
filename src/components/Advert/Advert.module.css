@@ -61,9 +61,14 @@
 }
 
 .button_like_advert {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+}
+
+.button_like_advert:hover {
+  color: #e44848;
 }
 
 .button_show_more {
