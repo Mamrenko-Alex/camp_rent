@@ -1,4 +1,5 @@
 import { Advert } from 'components/Advert/Advert';
+import { Header } from 'components/Header/Header';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -9,13 +10,16 @@ const Favorites = () => {
 
   return (
     <>
-      <Advert
-        adverts={favorites}
-        loading={loading}
-        error={error}
-        isLoadMore={isLoadMore}
-        handleLoadMore={null}
-      />
+      <Header />
+      <div className="content_container">
+        <Advert
+          adverts={favorites}
+          loading={loading}
+          error={error}
+          isLoadMore={isLoadMore}
+          handleLoadMore={null}
+        />
+      </div>
     </>
   );
 };

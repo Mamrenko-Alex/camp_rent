@@ -111,10 +111,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
+.content_container {
   display: flex;
   gap: 64px;
   justify-content: center;
-  margin-top: 24px;
   margin-bottom: 24px;
 }

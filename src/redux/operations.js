@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://661b793965444945d04f8dcc.mockapi.io/v1';
@@ -50,20 +51,50 @@ export const removeFromFavorites = id => {
   };
 };
 
-export const fetchAdvert = page => {
-  return async dispatch => {
-    dispatch(fetchAdvertRequest());
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`/advert`);
-      const data = response.data;
-      const startIndex = (page - 1) * 4;
-      const endIndex = page * 4;
-      data.length <= page * 4
-        ? dispatch(fetchAdvertLoadMore(false))
-        : dispatch(fetchAdvertLoadMore(true));
-      dispatch(fetchAdvertSuccess(data.slice(startIndex, endIndex)));
+      const response = await axios.get(`/contacts`);
+      return response.data;
     } catch (error) {
-      dispatch(fetchAdvertFailure(error));
+      thunkAPI.rejectWithValue(error.message);
     }
-  };
-};
+  }
+);
+
+export const fetchAdvert = createAsyncThunk(
+  'advert/fetchAll',
+  async (page, thunkAPI) => {
+    try {
+      const LIMIT = 13;
+      const response = await axios.get(`/advert?page=${page}&limit=4`);
+      const data = response.data;
+      data.length > LIMIT
+        ? thunkAPI.dispatch(fetchAdvertLoadMore(false))
+        : thunkAPI.dispatch(fetchAdvertLoadMore(true));
+      return thunkAPI.dispatch(fetchAdvertSuccess(data));
+    } catch (error) {
+      return thunkAPI.dispatch(fetchAdvertFailure(error));
+    }
+  }
+);
+
+// export const fetchAdvert = page => {
+//   return async dispatch => {
+//     dispatch(fetchAdvertRequest());
+//     try {
+//       console.log(`/advert?page=${page}&limit=4`);
+//       const response = await axios.get(`/advert?page=${page}&limit=4`);
+//       const data = response.data;
+//       console.log(response);
+//       data.length <= page * 4
+//         ? dispatch(fetchAdvertLoadMore(false))
+//         : dispatch(fetchAdvertLoadMore(true));
+//       dispatch(fetchAdvertSuccess(data));
+//     } catch (error) {
+//       console.log(error);
+//       dispatch(fetchAdvertFailure(error));
+//     }
+//   };
+// };

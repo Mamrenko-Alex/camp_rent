@@ -6,6 +6,8 @@ export const selectIsLoading = state => state.advert.isLoading;
 
 export const selectError = state => state.advert.error;
 
+export const selectFavorites = state => state.advert.favorites;
+
 // export const selectAvailableContacts = createSelector(
 //   [selectContacts, selectFilter],
 //   (contacts, filter) => {
