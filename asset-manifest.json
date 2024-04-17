@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/camp_rent/static/css/main.471a5f1b.css",
-    "main.js": "/camp_rent/static/js/main.c4cdf952.js",
+    "main.css": "/camp_rent/static/css/main.443c67fa.css",
+    "main.js": "/camp_rent/static/js/main.e159fdfb.js",
     "static/media/Inter-SemiBold.woff2": "/camp_rent/static/media/Inter-SemiBold.3be6b9e3b22c24eaada7.woff2",
     "static/media/Inter-Medium.woff2": "/camp_rent/static/media/Inter-Medium.9c1163dc5cc2a1c9b55b.woff2",
     "static/media/Inter-Regular.woff2": "/camp_rent/static/media/Inter-Regular.76224c7fa303861462e7.woff2",
     "index.html": "/camp_rent/index.html",
-    "main.471a5f1b.css.map": "/camp_rent/static/css/main.471a5f1b.css.map",
-    "main.c4cdf952.js.map": "/camp_rent/static/js/main.c4cdf952.js.map"
+    "main.443c67fa.css.map": "/camp_rent/static/css/main.443c67fa.css.map",
+    "main.e159fdfb.js.map": "/camp_rent/static/js/main.e159fdfb.js.map"
   },
   "entrypoints": [
-    "static/css/main.471a5f1b.css",
-    "static/js/main.c4cdf952.js"
+    "static/css/main.443c67fa.css",
+    "static/js/main.e159fdfb.js"
   ]
 }
