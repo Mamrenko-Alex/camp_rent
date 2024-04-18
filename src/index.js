@@ -10,7 +10,7 @@ import { Loader } from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/camp_rent">
       <Provider store={store}>
         <PersistGate loading={<Loader />} persistor={persistor}>
           <App />

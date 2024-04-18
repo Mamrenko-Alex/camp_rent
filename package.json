@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mamrenko-alex.github.io/camp_rent/",
+  "homepage": "https://goitacademy.github.io/camp_rent/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.16.3",
