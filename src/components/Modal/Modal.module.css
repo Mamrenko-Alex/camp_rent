@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1200;
+  z-index: 12;
 }
 
 .modal {
@@ -18,7 +18,7 @@
   padding: 40px;
   border-radius: 20px;
   background: #fff;
-  scrollbar-width: thin; /* Устанавливаем тонкую полосу прокрутки */
+  scrollbar-width: thin;
   scrollbar-color: #475467 transparent;
 }
 
@@ -101,4 +101,147 @@
   display: flex;
   gap: 40px;
   margin-bottom: 14px;
+}
+
+.venhicle_container {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  max-width: 430px;
+  margin-top: 44px;
+}
+
+.bottom_wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.venhicle_header {
+  color: var(--primary-color);
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+.venhicle_list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.venhicle_item {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewer_wrapper {
+  max-width: 430px;
+  margin-top: 44px;
+  height: 530px;
+  overflow-y: scroll;
+}
+
+.reviewev_list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reviewev_item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reviewer_name {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.reviewer_item_wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.reviewer_without_prhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #f2f4f7;
+  color: #e44848;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.reviewer_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.reviewer_comment {
+  color: #475467;
+}
+
+.reviewer_rating_wrapper {
+  display: flex;
+  gap: 2px;
+}
+
+.active,
+.disable {
+  font-size: 18px;
+}
+
+.active_start {
+  color: gold;
+}
+
+.disable_start {
+  color: #f2f4f7;
+}
+
+.button_wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.button_features,
+.button_rewievs {
+  background-color: transparent;
+  width: 100px;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+}
+
+.button_features::after,
+.button_rewievs::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #ff0000;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transition: width 0.3s;
+}
+
+.button_features.active::after,
+.button_rewievs.active::after {
+  width: 100%;
+}
+
+.button_features:hover::after,
+.button_rewievs:hover::after {
+  width: 100%;
 }

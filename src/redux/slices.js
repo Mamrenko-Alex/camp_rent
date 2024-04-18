@@ -28,8 +28,8 @@ const advertReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        advert: action.payload,
-        // advert: [...state.advert, ...action.payload],
+        // advert: action.payload,
+        advert: [...state.advert, ...action.payload],
         error: '',
       };
     case FETCH_ADVERT_FAILURE:

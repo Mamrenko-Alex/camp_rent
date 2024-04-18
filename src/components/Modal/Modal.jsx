@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Modal.module.css';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { RentForm } from 'components/Forms/RentForm';
+import { Reviews } from './Reviews';
+import { Features } from './Featrues';
 
 export const Modal = ({ toggleModal, offer }) => {
+  const navigate = useNavigate();
+  const [activeButton, setActiveButton] = useState('features');
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -16,7 +24,7 @@ export const Modal = ({ toggleModal, offer }) => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
     };
-  }, [toggleModal]);
+  }, [toggleModal, navigate]);
 
   const handleOverlayClick = event => {
     if (event.target === event.currentTarget) {
@@ -27,6 +35,19 @@ export const Modal = ({ toggleModal, offer }) => {
   const handleCloseButtonClick = () => {
     toggleModal();
   };
+
+  const handleSwitchButton = buttonName => {
+    setActiveButton(buttonName === activeButton ? null : buttonName);
+  };
+
+  const Line = styled.div`
+    left: 0;
+    bottom: 12px;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(16, 24, 40, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  `;
 
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
@@ -60,17 +81,30 @@ export const Modal = ({ toggleModal, offer }) => {
           ))}
         </div>
         <p className={styles.description_advert}>{offer.description}</p>
-        <nav>
-          <ul className={styles.nav_list}>
-            <li className={styles.nav_item}>
-              <h2>Features</h2>
-            </li>
-            <li className={styles.nav_item}>
-              <h2>Reviews</h2>
-            </li>
-          </ul>
-        </nav>
-        <hr />
+        <div className={styles.button_wrapper}>
+          <button
+            className={`${styles.button_features}  ${
+              activeButton === 'features' && styles.active
+            }`}
+            onClick={() => handleSwitchButton('features')}
+          >
+            Features
+          </button>
+          <button
+            className={`${styles.button_rewievs} ${
+              activeButton === 'reviews' && styles.active
+            }`}
+            onClick={() => handleSwitchButton('reviews')}
+          >
+            Rewievs
+          </button>
+        </div>
+        <Line />
+        <div className={styles.bottom_wrapper}>
+          {activeButton === 'features' && <Features offer={offer} />}
+          {activeButton === 'reviews' && <Reviews reviews={offer.reviews} />}
+          <RentForm />
+        </div>
       </div>
     </div>
   );

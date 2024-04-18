@@ -103,3 +103,7 @@
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+.detail_info_wrapper {
+  margin: 24px 0;
+}

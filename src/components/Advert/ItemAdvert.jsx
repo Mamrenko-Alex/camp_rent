@@ -84,12 +84,15 @@ export const ItemAdvert = ({ offer }) => {
             <span>{offer.location}</span>
           </div>
           <p className={styles.description_advert}>{offer.description}...</p>
-          <DetailsInfo
-            details={offer.details}
-            adults={offer.adults}
-            engine={offer.engine}
-            transmission={offer.transmission}
-          />
+          <div className={styles.detail_info_wrapper}>
+            <DetailsInfo
+              details={offer.details}
+              adults={offer.adults}
+              engine={offer.engine}
+              transmission={offer.transmission}
+              endIndex={3}
+            />
+          </div>
           <button className={styles.button_show_more} onClick={open}>
             Show more
           </button>

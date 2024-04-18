@@ -66,16 +66,19 @@ export const fetchContacts = createAsyncThunk(
 export const fetchAdvert = createAsyncThunk(
   'advert/fetchAll',
   async (page, thunkAPI) => {
+    thunkAPI.dispatch(fetchAdvertRequest());
+    const LIMIT = 13;
     try {
-      const LIMIT = 13;
       const response = await axios.get(`/advert?page=${page}&limit=4`);
       const data = response.data;
-      data.length > LIMIT
-        ? thunkAPI.dispatch(fetchAdvertLoadMore(false))
-        : thunkAPI.dispatch(fetchAdvertLoadMore(true));
+      console.log(LIMIT < page * 4);
       return thunkAPI.dispatch(fetchAdvertSuccess(data));
     } catch (error) {
       return thunkAPI.dispatch(fetchAdvertFailure(error));
+    } finally {
+      LIMIT < page * 4
+        ? thunkAPI.dispatch(fetchAdvertLoadMore(false))
+        : thunkAPI.dispatch(fetchAdvertLoadMore(true));
     }
   }
 );
