@@ -71,7 +71,6 @@ export const fetchAdvert = createAsyncThunk(
     try {
       const response = await axios.get(`/advert?page=${page}&limit=4`);
       const data = response.data;
-      console.log(LIMIT < page * 4);
       return thunkAPI.dispatch(fetchAdvertSuccess(data));
     } catch (error) {
       return thunkAPI.dispatch(fetchAdvertFailure(error));
