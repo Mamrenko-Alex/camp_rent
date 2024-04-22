@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Line = styled.div`
   position: absolute;
   left: 0;
-  bottom: 12px;
+  bottom: 15px;
   width: 100%;
   height: 1px;
   background-color: rgba(16, 24, 40, 0.2);
@@ -25,11 +25,11 @@ const StyledLink = styled(NavLink)`
   &::after {
     content: '';
     width: 0;
-    height: 2px;
+    height: 3px;
     background-color: #ff0000;
     position: absolute;
     left: 0;
-    bottom: -7px;
+    bottom: -14px;
     transition: width 0.3s;
   }
 
@@ -44,15 +44,19 @@ const StyledLink = styled(NavLink)`
 
 export const Header = () => {
   return (
-    <header className={styles.header}>
-      <nav>
-        <StyledLink to="/" end>
-          Home
-        </StyledLink>
-        <StyledLink to="/catalog">Catalog</StyledLink>
-        <StyledLink to="/favorites">Favorites</StyledLink>
-      </nav>
-      <Line />
-    </header>
+    <>
+      <header className={styles.header}>
+        <div className={styles.header_wrapper}>
+          <nav>
+            <StyledLink to="/" end>
+              Home
+            </StyledLink>
+            <StyledLink to="/catalog">Catalog</StyledLink>
+            <StyledLink to="/favorites">Favorites</StyledLink>
+          </nav>
+          <Line />
+        </div>
+      </header>
+    </>
   );
 };

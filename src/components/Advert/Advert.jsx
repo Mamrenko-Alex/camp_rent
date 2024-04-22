@@ -1,34 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Advert.module.css';
 import { Loader } from '../Loader/Loader';
 import { ListAdvert } from './ListAdvert';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAdvert } from '../../redux/operations';
+import { useSelector } from 'react-redux';
+import { SmallLoader } from 'components/Loader/SmallLoader';
+import {
+  selectError,
+  selectIsLoadMore,
+  selectIsLoading,
+} from '../../redux/selectors';
 
-export const Advert = ({ adverts }) => {
-  const dispatch = useDispatch();
-  const { loading, error, isLoadMore } = useSelector(state => state.advert);
-
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    dispatch(fetchAdvert(page));
-  }, [dispatch, page]);
-
-  const handleLoadMore = () => {
-    setPage(page + 1);
-  };
+export const Advert = ({ adverts, handleLoadMore }) => {
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const isLoadMore = useSelector(selectIsLoadMore);
 
   return (
     <section className={styles.section_advert}>
-      {loading && <Loader />}
+      {isLoading && adverts.length === 0 && <Loader />}
       {error && typeof error === 'string' && <div>Error: {error}</div>}
       {adverts && <ListAdvert adverts={adverts} />}
-      {isLoadMore && !loading && (
+      {(isLoadMore && !isLoading && (
         <button className={styles.button_load_more} onClick={handleLoadMore}>
           Load more
         </button>
-      )}
+      )) ||
+        (isLoading && adverts.length > 0 && <SmallLoader />)}
     </section>
   );
 };
