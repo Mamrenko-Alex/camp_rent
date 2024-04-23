@@ -25,7 +25,6 @@ const Catalog = () => {
   }, [dispatch, page]);
 
   const handleLoadMore = () => {
-    // dispatch(fetchAdvert(page));
     setPage(page + 1);
   };
 

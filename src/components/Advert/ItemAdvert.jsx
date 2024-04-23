@@ -4,19 +4,17 @@ import { Modal } from '../Modal/Modal';
 import styles from './Advert.module.css';
 import { useToggle } from 'components/my_hooks/useToggle';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorites, removeFromFavorites } from '../../redux/operations';
+import { addToFavorites, removeFromFavorites } from '../../redux/slices';
 import { selectFavorites } from '../../redux/selectors';
 
 export const ItemAdvert = ({ offer }) => {
   const { isModalOpen, open, toggle } = useToggle();
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
+  console.log('favorites =>', favorites);
 
   const handleAddToFavorites = advert => {
-    console.log('favorites =>', favorites);
-    console.log(favorites.filter(adv => adv === advert));
-    console.log(favorites.includes(advert));
-    if (favorites.includes(advert)) {
+    if (favorites.findIndex(({ id }) => id === advert.id) !== -1) {
       dispatch(removeFromFavorites(advert.id));
     } else {
       dispatch(addToFavorites(advert));
