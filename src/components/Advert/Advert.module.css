@@ -60,17 +60,6 @@
   margin-top: 8px;
 }
 
-.button_like_advert {
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.button_like_advert:hover {
-  color: #e44848;
-}
-
 .button_show_more {
   width: auto;
   padding: 16px 40px;
@@ -106,4 +95,28 @@
 
 .detail_info_wrapper {
   margin: 24px 0;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  overflow: auto;
+  fill: none;
+  stroke: var(--primary-color);
+  cursor: pointer;
+}
+
+.icon:hover {
+  fill: #e44848;
+  stroke: #e44848;
+}
+
+.liked {
+  fill: #e44848;
+  stroke: #e44848;
+}
+
+.liked:hover {
+  fill: #e44848;
+  stroke: #e44848;
 }

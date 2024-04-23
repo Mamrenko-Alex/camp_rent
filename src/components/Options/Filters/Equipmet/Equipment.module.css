@@ -35,3 +35,8 @@
   width: 360px;
   margin-top: 14px;
 }
+
+.icon {
+  fill: none;
+  stroke: var(--primary-color);
+}

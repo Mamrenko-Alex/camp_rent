@@ -1,5 +1,5 @@
 .input_location {
-  padding: 18px 0 18px 18px;
+  padding: 18px 0 18px 44px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
@@ -17,4 +17,22 @@
 .label_location {
   color: rgba(16, 24, 40, 0.6);
   font-weight: 500;
+}
+
+.input_wrapper {
+  position: relative;
+}
+
+.logo_location {
+  width: 18px;
+  height: 20px;
+  fill: none;
+  stroke: rgba(16, 24, 40, 0.6);
+  position: absolute;
+  left: 18px;
+  top: 19px;
+}
+
+.input_location:focus + .logo_location {
+  stroke: var(--primary-color);
 }

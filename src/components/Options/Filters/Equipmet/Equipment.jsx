@@ -71,8 +71,8 @@ export const Equipment = () => {
       <h2>Vehicle equipment</h2>
       <hr />
       <ul className={styles.list_equipment}>
-        {equipmentTrack.map(({ name, id }) => (
-          <ItemEquipment key={id}>{name}</ItemEquipment>
+        {equipmentTrack.map(({ name, id, detail }) => (
+          <ItemEquipment key={id} content={name} spriteImg={detail} />
         ))}
       </ul>
     </div>

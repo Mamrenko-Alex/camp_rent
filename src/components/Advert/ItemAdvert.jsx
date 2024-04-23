@@ -6,18 +6,45 @@ import { useToggle } from 'components/my_hooks/useToggle';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../redux/slices';
 import { selectFavorites } from '../../redux/selectors';
+import sprite from '../../img/svg/sprite.svg';
 
 export const ItemAdvert = ({ offer }) => {
   const { isModalOpen, open, toggle } = useToggle();
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  console.log('favorites =>', favorites);
+
+  const isLiked = advertId => {
+    return favorites.some(({ id }) => id === advertId);
+  };
 
   const handleAddToFavorites = advert => {
     if (favorites.findIndex(({ id }) => id === advert.id) !== -1) {
       dispatch(removeFromFavorites(advert.id));
     } else {
       dispatch(addToFavorites(advert));
+    }
+  };
+
+  const handleMouseEnter = id => {
+    if (isLiked(id)) {
+      const icon = document.querySelector(`#image_${id}`);
+      if (icon) {
+        icon.setAttribute('href', `${sprite}#unlike`);
+      }
+    } else {
+      const icon = document.querySelector(`#image_${id}`);
+      if (icon) {
+        icon.setAttribute('href', `${sprite}#like`);
+      }
+    }
+  };
+
+  const handleMouseLeave = id => {
+    if (isLiked(id)) {
+      const icon = document.querySelector(`#image_${id}`);
+      if (icon) {
+        isLiked(id) && icon.setAttribute('href', `${sprite}#like`);
+      }
     }
   };
 
@@ -38,41 +65,16 @@ export const ItemAdvert = ({ offer }) => {
             <h2>{offer.name}</h2>
             <div className={styles.left_info_wrapper}>
               <h2>€{offer.price.toFixed(2)}</h2>
-              <span
-                className={styles.button_like_advert}
+              <svg
                 onClick={() => handleAddToFavorites(offer)}
+                className={`${styles.icon}  ${
+                  isLiked(offer.id) && styles.liked
+                }`}
+                onMouseEnter={() => handleMouseEnter(offer.id)}
+                onMouseLeave={() => handleMouseLeave(offer.id)}
               >
-                {' '}
-                &#9829;
-              </span>
-              {/* <svg
-                className={styles.button_like_advert}
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="24"
-                viewBox="0 0 25 24"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_58_198)">
-                  <path
-                    d="M21.3401 4.60999C20.8294 4.099 20.2229 3.69364 19.5555 3.41708C18.888 3.14052 18.1726 2.99817 17.4501 2.99817C16.7276 2.99817 16.0122 3.14052 15.3448 3.41708C14.6773 3.69364 14.0709 4.099 13.5601 4.60999L12.5001 5.66999L11.4401 4.60999C10.4084 3.5783 9.00915 2.9987 7.55012 2.9987C6.09108 2.9987 4.69181 3.5783 3.66012 4.60999C2.62843 5.64169 2.04883 7.04096 2.04883 8.49999C2.04883 9.95903 2.62843 11.3583 3.66012 12.39L4.72012 13.45L12.5001 21.23L20.2801 13.45L21.3401 12.39C21.8511 11.8792 22.2565 11.2728 22.533 10.6053C22.8096 9.93789 22.9519 9.22248 22.9519 8.49999C22.9519 7.77751 22.8096 7.0621 22.533 6.39464C22.2565 5.72718 21.8511 5.12075 21.3401 4.60999Z"
-                    stroke="#101828"
-                    stroke-width="2.3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_58_198">
-                    <rect
-                      width="24"
-                      height="24"
-                      fill="white"
-                      transform="translate(0.5)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg> */}
+                <use id={`image_${offer.id}`} href={`${sprite}#like`}></use>
+              </svg>
             </div>
           </div>
           <div className={styles.secondary_info}>
