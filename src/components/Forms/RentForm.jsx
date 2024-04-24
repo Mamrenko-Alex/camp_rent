@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import styles from './RentForm.module.css';
+import toast from 'react-hot-toast';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import sprite from '../../img/svg/sprite.svg';
 
-export const RentForm = () => {
+export const RentForm = ({ offer }) => {
   const [fields, setFields] = useState({
     name: '',
     email: '',
-    booking_date: '',
     comment: '',
   });
-  const { name, email, booking_date, comment } = fields;
+  const { name, email, comment } = fields;
+
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
 
   const handleChange = event => {
     const { name, value } = event.target;
+    console.log(event.target);
     setFields(prevField => ({ ...prevField, [name]: value }));
   };
 
@@ -21,37 +28,50 @@ export const RentForm = () => {
 
     if (!name.trim()) {
       errors.name = 'Name is required';
+      toast.error('Name is required');
+      return;
     }
 
     if (!email.trim()) {
       errors.email = 'Email is required';
+      toast.error('Email is required');
+      return;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       errors.email = 'Email is invalid';
+      toast.error('Email is invalid');
+      return;
     }
 
-    if (!booking_date.trim()) {
-      errors.booking_date = 'Booking date is required';
+    if (!startDate.toISOString().split('T')[0]) {
+      errors.startDate = 'Booking date is required';
+      toast.error('Booking date is required');
+      return;
     } else {
       const currentDate = new Date();
-      const selectedDate = new Date(booking_date);
+      const selectedDate = new Date(startDate);
       if (selectedDate <= currentDate) {
-        errors.booking_date = 'Booking date must be in the future';
+        errors.startDate = 'Booking date must be in the future';
+        toast.error('Booking date must be in the future');
+        return;
       }
     }
 
     if (Object.keys(errors).length === 0) {
-      // Form is valid, do something (e.g., submit form)
-      console.log('Form is valid');
-      console.log(fields);
+      // Form is valid, do something (e.g., post on backend)
+      toast.success(
+        `The '${offer.name}' has been booked for the date of ${
+          startDate.toISOString().split('T')[0]
+        } to ${endDate.toISOString().split('T')[0]}.`
+      );
       setFields({
         name: '',
         email: '',
-        booking_date: '',
         comment: '',
       });
+      setDateRange([null, null]);
     } else {
-      // Form is invalid, display errors
-      console.log('Form is invalid', errors);
+      toast.error('Form is invalid');
+      console.log(errors);
     }
   };
 
@@ -59,6 +79,7 @@ export const RentForm = () => {
     <div className={styles.rent_form_container}>
       <h3>Book your campervan now</h3>
       <p>Stay connected! We are always ready to help you.</p>
+
       <form className={styles.rent_form}>
         <input
           name="name"
@@ -76,14 +97,22 @@ export const RentForm = () => {
           value={email}
           onChange={handleChange}
         />
-        <input
-          name="booking_date"
-          type="date"
-          placeholder="Booking date"
-          className={styles.rent_form_input}
-          value={booking_date}
-          onChange={handleChange}
-        />
+        <div className={styles.input_date_container}>
+          <DatePicker
+            formatWeekDay={nameOfDay => nameOfDay.slice(0, 3)}
+            onChange={update => {
+              setDateRange(update);
+            }}
+            className={`${styles.rent_form_input} ${styles.date_input}`}
+            minDate={new Date()}
+            selectsRange={true}
+            startDate={startDate}
+            endDate={endDate}
+          />
+          <svg className={styles.icon_calendar} width={32} height={32}>
+            <use href={`${sprite}#calendar`}></use>
+          </svg>
+        </div>
         <textarea
           name="comment"
           placeholder="Comment"

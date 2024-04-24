@@ -103,7 +103,7 @@ export const Modal = ({ toggleModal, offer }) => {
         <div className={styles.bottom_wrapper}>
           {activeButton === 'features' && <Features offer={offer} />}
           {activeButton === 'reviews' && <Reviews reviews={offer.reviews} />}
-          <RentForm />
+          <RentForm offer={offer} />
         </div>
       </div>
     </div>
