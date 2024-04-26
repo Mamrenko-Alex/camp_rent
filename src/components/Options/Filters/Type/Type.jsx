@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Type.module.css';
 import { ItemType } from './ItemType';
+import { nanoid } from 'nanoid';
 
 const typesTrack = [
   { id: 1, name: 'Van', spriteImg: 'van' },
@@ -9,13 +10,30 @@ const typesTrack = [
 ];
 
 export const Type = () => {
+  const [selectedType, setSelectedType] = useState([]);
+
+  const handleTypeChange = id => {
+    if (selectedType.includes(id)) {
+      setSelectedType(selectedType.filter(item => item !== id));
+    } else {
+      setSelectedType([...selectedType, id]);
+    }
+  };
+
   return (
     <div className={styles.container_type}>
       <h2>Vehicle type</h2>
       <hr />
       <ul className={styles.list_type}>
         {typesTrack.map(({ spriteImg, name, id }) => (
-          <ItemType key={id} spriteImg={spriteImg} content={name} />
+          <ItemType
+            key={nanoid()}
+            spriteImg={spriteImg}
+            id={id}
+            content={name}
+            selected={selectedType.includes(id)}
+            onChange={handleTypeChange}
+          />
         ))}
       </ul>
     </div>

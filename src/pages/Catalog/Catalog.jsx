@@ -21,7 +21,7 @@ const Catalog = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchAdvert(page));
+    dispatch(fetchAdvert({ page, limit: 4 }));
   }, [dispatch, page]);
 
   const handleLoadMore = () => {

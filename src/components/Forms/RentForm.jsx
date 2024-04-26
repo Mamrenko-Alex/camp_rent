@@ -18,7 +18,6 @@ export const RentForm = ({ offer, toggleModal }) => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target);
     setFields(prevField => ({ ...prevField, [name]: value }));
   };
 

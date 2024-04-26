@@ -2,24 +2,23 @@ import React, { useState, useEffect } from 'react';
 import styles from './Location.module.css';
 import sprite from '../../../img/svg/sprite.svg';
 
-export const Location = () => {
+export const Location = ({ location, setLocation }) => {
   const [placeholderText, setPlaceholderText] = useState('');
-  const initialPlaceholderText = 'Put city...';
 
   useEffect(() => {
     let index = 0;
     const typingSpeed = 100;
 
     const typeText = () => {
-      if (index <= initialPlaceholderText.length) {
-        setPlaceholderText(initialPlaceholderText.slice(0, index));
+      if (index <= location.length) {
+        setPlaceholderText(location.slice(0, index));
         index++;
         setTimeout(typeText, typingSpeed);
       }
     };
     typeText();
     return () => clearTimeout();
-  }, []);
+  }, [location]);
 
   return (
     <div className={styles.container_location}>
@@ -32,8 +31,9 @@ export const Location = () => {
           type="text"
           id="location_input"
           name="location"
+          value={location === 'Put your city...' ? '' : location}
+          onChange={e => setLocation(e.target.value)}
           placeholder={placeholderText}
-          required
         />
         <svg className={styles.logo_location}>
           <use href={`${sprite}#map-pin`}></use>

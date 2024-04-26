@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ItemEquipment } from './ItemEquipment';
 import styles from './Equipment.module.css';
+import { nanoid } from 'nanoid';
 
 const equipmentTrack = [
   {
@@ -66,13 +67,30 @@ const equipmentTrack = [
 ];
 
 export const Equipment = () => {
+  const [selectedEquipment, setSelectedEquipment] = useState([]);
+
+  const handleEquipmentChange = id => {
+    if (selectedEquipment.includes(id)) {
+      setSelectedEquipment(selectedEquipment.filter(item => item !== id));
+    } else {
+      setSelectedEquipment([...selectedEquipment, id]);
+    }
+  };
+
   return (
     <div className={styles.container_equipment}>
       <h2>Vehicle equipment</h2>
       <hr />
       <ul className={styles.list_equipment}>
         {equipmentTrack.map(({ name, id, detail }) => (
-          <ItemEquipment key={id} content={name} spriteImg={detail} />
+          <ItemEquipment
+            key={nanoid()}
+            id={id}
+            content={name}
+            spriteImg={detail}
+            selected={selectedEquipment.includes(id)}
+            onChange={handleEquipmentChange}
+          />
         ))}
       </ul>
     </div>

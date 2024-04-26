@@ -2,6 +2,7 @@ import React from 'react';
 import { ItemDetailsInfo } from './ItemDetailsInfo';
 import styles from './DetailsInfo.module.css';
 import sprite from '../../../img/svg/sprite.svg';
+import { nanoid } from 'nanoid';
 
 export const DetailsInfo = ({
   details,
@@ -23,7 +24,9 @@ export const DetailsInfo = ({
       {Object.keys(details)
         .slice(0, endIndex)
         .map(key => (
-          <ItemDetailsInfo key={key}>{details[key] > 0 && key}</ItemDetailsInfo>
+          <ItemDetailsInfo key={nanoid()}>
+            {details[key] > 0 && key}
+          </ItemDetailsInfo>
         ))}
     </ul>
   );

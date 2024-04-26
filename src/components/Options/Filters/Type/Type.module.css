@@ -12,6 +12,7 @@
   border: 1px solid rgba(16, 24, 40, 0.2);
   mix-blend-mode: multiply;
   transition: border-color 0.3s ease;
+  cursor: pointer;
 }
 
 .icon_type {
@@ -35,4 +36,25 @@
   gap: 24px;
   width: 360px;
   margin-top: 14px;
+}
+
+.checkbox_input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.checkbox_label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selected {
+  border-color: var(--accent-color);
 }

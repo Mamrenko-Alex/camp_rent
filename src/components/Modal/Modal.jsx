@@ -2,10 +2,20 @@ import React, { useEffect, useState } from 'react';
 import styles from './Modal.module.css';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { nanoid } from 'nanoid';
 import { RentForm } from 'components/Forms/RentForm';
 import { Reviews } from './Reviews';
 import { Features } from './Featrues';
 import sprite from '../../img/svg/sprite.svg';
+
+const Line = styled.div`
+  left: 0;
+  bottom: 12px;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(16, 24, 40, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
 
 export const Modal = ({ toggleModal, offer }) => {
   const navigate = useNavigate();
@@ -41,15 +51,6 @@ export const Modal = ({ toggleModal, offer }) => {
     setActiveButton(buttonName === activeButton ? null : buttonName);
   };
 
-  const Line = styled.div`
-    left: 0;
-    bottom: 12px;
-    width: 100%;
-    height: 1px;
-    background-color: rgba(16, 24, 40, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  `;
-
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div className={styles.modal}>
@@ -74,7 +75,7 @@ export const Modal = ({ toggleModal, offer }) => {
         <div className={styles.gallery_advert}>
           {offer.gallery.map(photo => (
             <img
-              //   Not unique objects
+              key={nanoid()}
               className={styles.photo_advert}
               src={photo}
               alt={offer.name}

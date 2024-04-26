@@ -28,7 +28,6 @@
 }
 
 .button_close:hover {
-  /* transform: scale(1.2); */
   transform: rotate(90deg);
 }
 
