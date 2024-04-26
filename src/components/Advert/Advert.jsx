@@ -14,7 +14,6 @@ export const Advert = ({ adverts, handleLoadMore, isFavorites }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const isLoadMore = useSelector(selectIsLoadMore);
-  console.log(isFavorites);
 
   return (
     <section className={styles.section_advert}>
