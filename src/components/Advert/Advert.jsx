@@ -10,22 +10,23 @@ import {
   selectIsLoading,
 } from '../../redux/selectors';
 
-export const Advert = ({ adverts, handleLoadMore }) => {
+export const Advert = ({ adverts, handleLoadMore, isFavorites }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const isLoadMore = useSelector(selectIsLoadMore);
+  console.log(isFavorites);
 
   return (
     <section className={styles.section_advert}>
       {isLoading && adverts.length === 0 && <Loader />}
       {error && typeof error === 'string' && <div>Error: {error}</div>}
       {adverts && <ListAdvert adverts={adverts} />}
-      {(isLoadMore && !isLoading && (
+      {(isLoadMore && !isLoading && !isFavorites && (
         <button className={styles.button_load_more} onClick={handleLoadMore}>
           Load more
         </button>
       )) ||
-        (isLoading && adverts.length > 0 && <SmallLoader />)}
+        (isLoading && adverts.length && !isFavorites > 0 && <SmallLoader />)}
     </section>
   );
 };

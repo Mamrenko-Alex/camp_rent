@@ -33,7 +33,11 @@ const Catalog = () => {
       <Header />
       <div className="content_container">
         <Options />
-        <Advert adverts={adverts} handleLoadMore={handleLoadMore} />
+        <Advert
+          adverts={adverts}
+          handleLoadMore={handleLoadMore}
+          isFavorites={false}
+        />
       </div>
     </>
   );

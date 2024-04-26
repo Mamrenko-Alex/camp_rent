@@ -15,7 +15,7 @@ const Favorites = () => {
     <>
       <Header />
       <div className="content_container">
-        <Advert adverts={favorites} />
+        <Advert adverts={favorites} isFavorites={true} />
       </div>
     </>
   );
