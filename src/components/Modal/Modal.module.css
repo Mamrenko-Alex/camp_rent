@@ -24,11 +24,12 @@
 
 .button_close {
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, rotate 0.3s ease;
 }
 
 .button_close:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.2); */
+  transform: rotate(90deg);
 }
 
 .name_wrapper {
@@ -244,4 +245,10 @@
 .button_features:hover::after,
 .button_rewievs:hover::after {
   width: 100%;
+}
+
+.icon_close {
+  width: 22px;
+  height: 22px;
+  stroke: var(--primary-color);
 }

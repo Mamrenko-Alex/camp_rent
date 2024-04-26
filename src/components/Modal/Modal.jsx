@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { RentForm } from 'components/Forms/RentForm';
 import { Reviews } from './Reviews';
 import { Features } from './Featrues';
+import sprite from '../../img/svg/sprite.svg';
 
 export const Modal = ({ toggleModal, offer }) => {
   const navigate = useNavigate();
@@ -58,7 +59,9 @@ export const Modal = ({ toggleModal, offer }) => {
             onClick={handleCloseButtonClick}
             className={styles.button_close}
           >
-            x
+            <svg className={styles.icon_close} width={32} height={32}>
+              <use href={`${sprite}#icon-close`}></use>
+            </svg>
           </span>
         </div>
         <div className={styles.secondary_info}>
@@ -103,7 +106,7 @@ export const Modal = ({ toggleModal, offer }) => {
         <div className={styles.bottom_wrapper}>
           {activeButton === 'features' && <Features offer={offer} />}
           {activeButton === 'reviews' && <Reviews reviews={offer.reviews} />}
-          <RentForm offer={offer} />
+          <RentForm offer={offer} toggleModal={toggleModal} />
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../img/svg/sprite.svg';
 
-export const RentForm = ({ offer }) => {
+export const RentForm = ({ offer, toggleModal }) => {
   const [fields, setFields] = useState({
     name: '',
     email: '',
@@ -42,7 +42,7 @@ export const RentForm = ({ offer }) => {
       return;
     }
 
-    if (!startDate.toISOString().split('T')[0]) {
+    if (!startDate || !endDate) {
       errors.startDate = 'Booking date is required';
       toast.error('Booking date is required');
       return;
@@ -63,6 +63,7 @@ export const RentForm = ({ offer }) => {
           startDate.toISOString().split('T')[0]
         } to ${endDate.toISOString().split('T')[0]}.`
       );
+      toggleModal();
       setFields({
         name: '',
         email: '',
@@ -70,8 +71,7 @@ export const RentForm = ({ offer }) => {
       });
       setDateRange([null, null]);
     } else {
-      toast.error('Form is invalid');
-      console.log(errors);
+      toast.error('Form is invalid, try again');
     }
   };
 
