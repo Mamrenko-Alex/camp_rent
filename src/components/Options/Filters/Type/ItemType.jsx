@@ -10,7 +10,7 @@ export const ItemType = ({ spriteImg, content, id, selected, onChange }) => {
     >
       <label className={styles.checkbox_label}>
         <input
-          type="checkbox"
+          type="radio"
           className={styles.checkbox_input}
           checked={selected}
           onChange={() => onChange(id)}
@@ -19,34 +19,6 @@ export const ItemType = ({ spriteImg, content, id, selected, onChange }) => {
           <use href={`${sprite}#${spriteImg}`}></use>
         </svg>
         <span className="list_item">{content}</span>
-      </label>
-    </li>
-  );
-};
-
-export const ItemEquipment = ({
-  spriteImg,
-  content,
-  id,
-  selected,
-  onChange,
-}) => {
-  return (
-    <li
-      className={`${styles.item_equipment} ${selected ? styles.selected : ''}`}
-      onClick={() => onChange(id)}
-    >
-      <label className={styles.checkbox_label}>
-        <input
-          type="checkbox"
-          className={styles.checkbox_input}
-          checked={selected}
-          onChange={() => onChange(id)}
-        />
-        <svg className={styles.icon} width={32} height={32}>
-          <use href={`${sprite}#${spriteImg}`}></use>
-        </svg>
-        <span className={styles.checkbox_content}>{content}</span>
       </label>
     </li>
   );

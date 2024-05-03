@@ -107,6 +107,7 @@ export const RentForm = ({ offer, toggleModal }) => {
             selectsRange={true}
             startDate={startDate}
             endDate={endDate}
+            placeholderText="Select a date"
           />
           <svg className={styles.icon_calendar} width={32} height={32}>
             <use href={`${sprite}#calendar`}></use>
