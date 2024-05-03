@@ -67,9 +67,15 @@ export const Modal = ({ toggleModal, offer }) => {
         </div>
         <div className={styles.secondary_info}>
           <span>
+            <span className={styles.active_start}>&#9733; </span>
             {offer.rating}({offer.reviews.length} Reviews)
           </span>
-          <span>{offer.location}</span>
+          <span>
+            <svg className={styles.icon_map} width={18} height={18}>
+              <use href={`${sprite}#map-pin`}></use>
+            </svg>{' '}
+            {offer.location}
+          </span>
         </div>
         <h2>€{offer.price.toFixed(2)}</h2>
         <div className={styles.gallery_advert}>

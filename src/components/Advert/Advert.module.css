@@ -120,3 +120,12 @@
   fill: #e44848;
   stroke: #e44848;
 }
+
+.gold_start {
+  color: gold;
+}
+
+.icon_map {
+  fill: transparent;
+  stroke: var(--primary-color);
+}

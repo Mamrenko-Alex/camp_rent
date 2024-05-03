@@ -251,3 +251,8 @@
   height: 22px;
   stroke: var(--primary-color);
 }
+
+.icon_map {
+  fill: transparent;
+  stroke: var(--primary-color);
+}

@@ -79,9 +79,15 @@ export const ItemAdvert = ({ offer }) => {
           </div>
           <div className={styles.secondary_info}>
             <span>
+              <span className={styles.gold_start}>&#9733; </span>
               {offer.rating}({offer.reviews.length} Reviews)
             </span>
-            <span>{offer.location}</span>
+            <span>
+              <svg className={styles.icon_map} width={20} height={20}>
+                <use href={`${sprite}#map-pin`}></use>
+              </svg>{' '}
+              {offer.location}
+            </span>
           </div>
           <p className={styles.description_advert}>{offer.description}...</p>
           <div className={styles.detail_info_wrapper}>
